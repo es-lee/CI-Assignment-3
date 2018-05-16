@@ -1,4 +1,5 @@
 .idea
+env/
 __Pycashe__
 *.pyc
 *.pdf
