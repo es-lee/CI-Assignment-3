@@ -43,11 +43,16 @@ def ex_1_b(x, y):
     :return:
     """
     ###########
-    ## TODO:
     ## Add a point (4,0) with label 1 to the data set and then
     ## train an SVM with a linear kernel
     ## and plot the decision boundary and support vectors using 'plot_svm_decision_boundary' function
     ###########
+    new_x = np.vstack((x, np.array([4,0])))
+    new_y = np.hstack((y, np.array((1))))
+
+    clf = svm.SVC(kernel='linear')
+    clf.fit(new_x, new_y)
+    plot_svm_decision_boundary(clf, new_x, new_y)
     pass
 
 
