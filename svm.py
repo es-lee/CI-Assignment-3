@@ -64,12 +64,19 @@ def ex_1_c(x, y):
     :return:
     """
     ###########
-    ## TODO:
     ## Add a point (4,0) with label 1 to the data set and then
     ## train an SVM with a linear kernel with different values of C
     ## and plot the decision boundary and support vectors  for each using 'plot_svm_decision_boundary' function
     ###########
     Cs = [1e6, 1, 0.1, 0.001]
+    new_x = np.vstack((x, np.array([4,0])))
+    new_y = np.hstack((y, np.array((1))))
+
+    for c in Cs:
+        clf = svm.SVC(kernel='linear', C=c)
+        clf.fit(new_x, new_y)
+        plot_svm_decision_boundary(clf, new_x, new_y)
+    return
 
 
 def ex_2_a(x_train, y_train, x_test, y_test):
