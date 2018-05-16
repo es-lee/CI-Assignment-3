@@ -25,10 +25,13 @@ def ex_1_a(x, y):
     :return:
     """
     ###########
-    ## TODO:
     ## Train an SVM with a linear kernel
     ## and plot the decision boundary and support vectors using 'plot_svm_decision_boundary' function
     ###########
+
+    clf = svm.SVC(kernel='linear')
+    clf.fit(x, y)
+    plot_svm_decision_boundary(clf, x, y)
     pass
 
 
