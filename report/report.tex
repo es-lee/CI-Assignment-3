@@ -22,6 +22,40 @@
 \end{titlepage}
 
 \section{Linear SVM}
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{1_datapoint.png}
+    \caption{Data points}
+    \includegraphics[width=0.5\textwidth]{1_a.png}
+    \caption{Plot for a}
+    \includegraphics[width=0.5\textwidth]{1_b.png}
+    \caption{Plot for b}
+  \end{center}
+\end{figure}
+
+\noindent
+The decision boundary changed almost horizontal to X1 when the new point because
+the original decision boundary cannot classify the new point correctly.\\
+When $C$ is large, it means minimizing of $\sum_{i=1}^{m}\xi_i$ is much important
+than minimizing of $||w||^2$. It means the decision boundary tries to minimize
+the size and the number of the margin constraint violations when $C$ is large.
+Thus, the margin will be narrower, the number of support vectors and samples
+that violates margin constraint will be smaller.
+
+\clearpage
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{1_c_6.png}
+    \includegraphics[width=0.5\textwidth]{1_c_0.png}
+    \includegraphics[width=0.5\textwidth]{1_c_-1.png}
+    \includegraphics[width=0.5\textwidth]{1_c_-3.png}
+    \caption{Plot when $C=10^6, 10^0, 10^{-1}, 10^{-3}$}
+  \end{center}
+\end{figure}
+
+\clearpage
+
 \section{Nonlinear (kernal) SVM}
 
 \subsection*{Results}
