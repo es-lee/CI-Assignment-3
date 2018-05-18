@@ -85,6 +85,22 @@ The above figures depict (left to right, top to bottom)
 Our Polynomial SVM had the best performance with a score of .9575 with degree 9.  The RBF SVM performed second best, scoring .9425 with a gamma of 1.85, and the Linear SVM exhibited the worst performance at .8125 .  Since the data is not linearly seperable, it is clear why the Linear SVM performed poorly.  The polynomial model outperformed the RBF model because it was able to more accurately model the central region $(-.5 < x_1, x_2 < .5)$.  It is worth noting that both models struggled with this region, with both having a significant number of misclassified examples in the region.
 
 In general, it can be seen that a high number of Support Vectors correlates to complex decision boundaries, although this is obviously not the case for linear models.  Despite the testing results, I believe the RBF model produces a better generalization of the data, as it places the decision boundary more accurately between data points than other models.
+\clearpage
 
 \section{Multiclass classification}
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{3.png}
+    \caption{Data samples}
+  \end{center}
+\end{figure}
+\begin{itemize}
+  \item For 'One-vs-Rest', 5 binary classifiers are needed. For 'One-vs-One', 10 classifiers are needed.
+  \item \includegraphics[width=0.7\textwidth]{3_a.png}
+  \item blah blah
+  \item blah blah
+  \item \includegraphics[width=0.5\textwidth]{3_b_cm.png}\\
+        \includegraphics[width=0.7\textwidth]{3_b_err.png}
+  \item blah blah
+\end{itemize}
 \end{document}
