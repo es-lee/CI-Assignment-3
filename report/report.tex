@@ -105,7 +105,7 @@ Another method is 'One-versus-One' (OVO).  With this strategy, a binary classifi
   \end{center}
 \end{figure}
 \begin{itemize}
-  \item We found that the Linear kernel performed surprisingly well on this problem.  One explanation is that since we are working in a very high-dimensional space (28 by 28 images result in 784 dimensions), it is probable that a data set is largely or entirely linearly separable.
+  \item The RBF Kernel exhibited the best performance at above 95\%, however we found that the Linear kernel surprisingly also performed well on this problem.  One explanation is that since we are working in a very high-dimensional space (28 by 28 images result in 784 dimensions), it is probable that a data set is largely or entirely linearly separable.
   \item Digit 5 was the most misclassified digit. 19 digits were misclassified as Digit 5 and 18 of them were digit 3 actually.
 \end{itemize}
 \begin{figure}[h]
@@ -117,8 +117,6 @@ Another method is 'One-versus-One' (OVO).  With this strategy, a binary classifi
   \end{center}
 \end{figure}
 \begin{itemize}
-  \item We don't know how the classifier works exactly. However, given that 9 out
-    of 10 misclassified images were digit 3, it might be hard to seperate samples
-    of digit 3 and 5 linearly.
+  \item By far the most common confusion by the algorithm was mistaking a '3' for a '5'.  It can be observed that 3 and 5 share similar characteristics, notably the arc in the lower half, which may lead to this confusion.  It is worth noting that while Kernel SVMs can model non-linearly separable data, they are still limited in terms of abstract reasoning and generalization.  Distinguishing between such similar characters could require a higher level of abstraction and generalization than the SVM model can provide.  This explains why some of the best performing algorithms on MNIST are neural networks.
 \end{itemize}
 \end{document}
