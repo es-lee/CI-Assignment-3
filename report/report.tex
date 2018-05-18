@@ -87,4 +87,9 @@ Our Polynomial SVM had the best performance with a score of .9575 with degree 9.
 In general, it can be seen that a high number of Support Vectors correlates to complex decision boundaries, although this is obviously not the case for linear models.  Despite the testing results, I believe the RBF model produces a better generalization of the data, as it places the decision boundary more accurately between data points than other models.
 
 \section{Multiclass classification}
+
+Multiclass classification must be performed whenever data falls into more than two classes.  In this instance, we are classifying images representing digits into one of 10 classes, 1 class for each digit 0 through 9.  One such multiclass classification method is 'One-versus-All' (OVA), where each class has its own binary classifier.  Each binary classifier considers a separate class as the class with positive label, and all other data points as the class with negative label.  For new points, the class of the classifier that assigns the new point a positive value is taken as the new point's class.  For data with $N$ categories, 'One-versus-Rest' classification requires $N$ binary classifiers, one for each class.
+
+Another method is 'One-versus-One' (OVO).  With this strategy, a binary classifier is trained between for each pair of classes.  For example, if we are classifying data where all points fall into 1 of 3 classes, A, B, and C, then we would use 3 binary classifiers, for the pairs (A,B), (B,C), and (A,C).  These binary classifiers classify along the two classes that define them (A and B for the first classifier of the previous example), and ignore all other data points.  To determine the class of a point, all classifiers 'vote' on the class of the point, and the point is assigned to whichever class receives the most votes.  For $N$ categories, this approach requires $N(N-1)/2$ classifiers.
+
 \end{document}
