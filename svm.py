@@ -184,6 +184,25 @@ def ex_3_a(x_train, y_train, x_test, y_test):
     ## - plot the scores with varying gamma using the function plot_score_versus_gamma
     ## - Mind that the chance level is not .5 anymore and add the score obtained with the linear kernel as optional argument of this function
     ###########
+    dfs = 'ovr'
+    c = 10
+
+    linear = svm.SVC(kernel='linear', C=c, decision_function_shape=dfs)
+    linear.fit(x_train, y_train)
+    lin_score_train = linear.score(x_train, y_train)
+    lin_score_test = linear.score(x_test, y_test)
+
+    gammas = [pow(10, i) for i in range(-5, 6)]
+    rbfs = [svm.SVC(kernel='rbf', gamma=gamma, C=c, decision_function_shape=dfs) for gamma in gammas]
+    for rbf in rbfs:
+        rbf.fit(x_train, y_train)
+
+    train_scores = [rbf.score(x_train, y_train) for rbf in rbfs]
+    test_scores = [rbf.score(x_test, y_test) for rbf in rbfs]
+
+    plot_score_vs_gamma(train_scores, test_scores, gammas, lin_score_train, lin_score_test, .2)
+
+
 
 
 def ex_3_b(x_train, y_train, x_test, y_test):
