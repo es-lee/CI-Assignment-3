@@ -177,7 +177,6 @@ def ex_3_a(x_train, y_train, x_test, y_test):
     :return:
     """
     ###########
-    ## TODO:
     ## Train multi-class SVMs with one-versus-rest strategy with
     ## - linear kernel
     ## - rbf kernel with gamma going from 10**-5 to 10**5
@@ -215,7 +214,6 @@ def ex_3_b(x_train, y_train, x_test, y_test):
     :return:
     """
     ###########
-    ## TODO:
     ## Train multi-class SVMs with a LINEAR kernel
     ## Use the sklearn.metrics.confusion_matrix to plot the confusion matrix.
     ## Find the index for which you get the highest error rate.
@@ -224,9 +222,24 @@ def ex_3_b(x_train, y_train, x_test, y_test):
     ###########
 
     labels = range(1, 6)
+    linear = svm.SVC(kernel='linear', C=10, decision_function_shape='ovr')
+    linear.fit(x_train, y_train)
+    y_pred = linear.predict(x_test)
+    cm = confusion_matrix(y_test, y_pred)
+    plot_confusion_matrix(cm, labels)
 
-    sel_error = np.array([0])  # Numpy indices to select images that are misclassified.
-    i = 0  # should be the label number corresponding the largest classification error
+    errors = np.zeros(5)
+    for i in range(5):
+        for j in range(5):
+            if i != j:
+                errors[j] += cm[i][j]
+    max_err_label = np.argmax(errors) + 1  # should be the label number corresponding the largest classification error
+
+    indices = np.nonzero(y_pred == max_err_label)[0].astype(int)
+    sel_err = np.array([], dtype=int)  # Numpy indices to select images that are misclassified.
+    for i in indices:
+        if y_test[i] != y_pred[i]:
+            sel_err = np.insert(sel_err, sel_err.size, i)
 
     # Plot with mnist plot
-    plot_mnist(x_test[sel_err], y_pred[sel_err], labels=labels[i], k_plots=10, prefix='Predicted class')
+    plot_mnist(x_test[sel_err], y_pred[sel_err], labels=max_err_label, k_plots=10, prefix='Predicted class')
